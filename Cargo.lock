@@ -745,7 +745,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust_decimal_postges_deserialization_issue"
+name = "rust_decimal_postgres_deserialization_issue"
 version = "0.1.0"
 dependencies = [
  "rust_decimal",

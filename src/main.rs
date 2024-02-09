@@ -28,10 +28,12 @@ async fn main() -> Result<(), Error> {
     let price_2 = prices[1];
 
     let sum = price_1 + price_2;
+    let checked_sum = price_1.checked_add(price_2);
 
     println!("Price 1: {price_1}");
     println!("Price 2: {price_2}");
-    println!("Incorrect summation: {}", sum);
+    println!("Incorrect summation: {sum}");
+    println!("Incorrect summation using checked_add (does not fail): {checked_sum:?}");
 
     // Get the `flags` field of `price_2`.
     // Can also check this in a debugger.
