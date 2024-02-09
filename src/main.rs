@@ -25,7 +25,7 @@ async fn main() -> Result<(), Error> {
         .collect::<Vec<_>>();
 
     let price_1 = prices[0];
-    let price_2 = prices[1];
+    let mut price_2 = prices[1];
 
     let sum = price_1 + price_2;
     let checked_sum = price_1.checked_add(price_2);
@@ -35,7 +35,12 @@ async fn main() -> Result<(), Error> {
     println!("Incorrect summation: {sum}");
     println!("Incorrect summation using checked_add (does not fail): {checked_sum:?}");
 
-    // Get the `flags` field of `price_2`.
+    println!(
+        "Scale for Price 2 using `Decimal::scale()`: {}",
+        price_2.scale()
+    );
+
+    // Get the `flags` field of `price_2` for inspection.
     // Can also check this in a debugger.
     let flags = unsafe {
         let ptr = &price_2 as *const Decimal;
@@ -47,7 +52,7 @@ async fn main() -> Result<(), Error> {
     println!("Flags in binary for Price 2: {flags:b}");
 
     let scale = (flags >> 16) & 0xff;
-    println!("Scale for Price 2 (valid values are 0-28): {scale}, binary: {scale:b}");
+    println!("Scale for Price 2 from `flags` (valid values are 0-28): {scale}, binary: {scale:b}");
 
     Ok(())
 }
