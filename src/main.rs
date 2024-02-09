@@ -25,7 +25,7 @@ async fn main() -> Result<(), Error> {
         .collect::<Vec<_>>();
 
     let price_1 = prices[0];
-    let mut price_2 = prices[1];
+    let price_2 = prices[1];
 
     let sum = price_1 + price_2;
     let checked_sum = price_1.checked_add(price_2);
